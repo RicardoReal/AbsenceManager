@@ -1,0 +1,1048 @@
+﻿/*	Global classes	*/
+.DDMainHeader
+{
+    font: bold 25px Tahoma, Arial, Sans-Serif;
+    color: #888;
+    padding-bottom: 12px;
+    border-bottom: 1px dotted #bbbbbb;
+    padding-top: 12px;
+    background-image: url('../Images/LOGO_SOCIEMBAL_MINI.png');
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.DDMainHeader a:link, .DDMainHeader a:visited, .DDMainHeader a:hover, .DDMainHeader a:active
+{
+    text-decoration: none;
+    color: Black;
+}
+
+.DDSubHeader
+{
+    margin-bottom: 10px;
+    font: 1.2em Tahoma, Arial, Sans-Serif;
+    color: Green;
+}
+
+.DD
+{
+    padding: 4px 4px 2px 4px;
+    font: .75em Tahoma, Arial, Sans-Serif;
+    margin-bottom: 10px;
+    border: 1px solid #006600;
+    background: #dddddd url(../Images/FILTER_GRADIENT.gif) repeat-x top;
+}
+
+.DD > input
+{
+    vertical-align: middle;
+}
+
+.DDInnerFilter
+{
+    padding: 0px 8px;
+    font: 1em Tahoma, Arial, Sans-Serif;
+    color: #666;
+    margin: 10px 0;
+}
+
+div.FilterRepeaterContainer
+{
+    margin-bottom: 1em;
+}
+
+div.FilterRepeaterItemContainer
+{
+    margin-top: 5px;
+}
+
+div.FilterRepeaterItemLabelContainer
+{
+    float: left;
+    width: 120px;
+}
+
+
+ul#FilterContainer
+{
+    width: 1100px;
+    padding: 0;
+    margin: 5px;
+}
+
+ul#FilterContainer li
+{
+    float: left;
+    width: 550px;
+    margin-bottom: 5px;
+    list-style: none;
+}
+
+br
+{
+    clear: left;
+}
+
+.DDLightHeader
+{
+    /*	font-weight: bold; 	background-color: #fdffb8; }*/
+    font-weight: bold;
+    text-align: right; /*background-color: #fdffb8;*/
+    background-image: url('../Images/Filter_back_go.gif');
+    background-repeat: repeat-y;
+    width: 100px;
+    white-space: nowrap; /* Miguel's Change */
+}
+
+.DDTextBox, .DDDropDown
+{
+    color: #666666;
+    font: .95em Tahoma, Arial, Sans-Serif;
+    border: 2px inset threedface;
+    background-color: #FEFEFE;
+}
+
+
+.JQDTTextBox, .JQDTextBox, .JQTTextBox
+{
+    color: #666;
+    font: .95em Tahoma, Arial, Sans-Serif;
+    border: 2px inset threedface;
+}
+
+.DDLabelFiltered
+{
+    color: #FF0000;
+    font: Tahoma, Arial, Sans-Serif;
+}
+
+.DDDropDown
+{
+}
+
+.DDFilter
+{
+    color: #666666;
+    font: .95em Tahoma, Arial, Sans-Serif;
+    border: 2px inset threedface;
+    background-color: #FEFEFE;
+}
+
+.DDControl
+{
+    padding: 0px;
+    font: .95em Tahoma, Arial, Sans-Serif;
+    color: #666;
+}
+
+.DDFloatLeft
+{
+    float: left;
+}
+
+.DDFloatRight
+{
+    float: right;
+}
+
+.DDFooter
+{
+    /*background-color: #dbddff;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.PageFooter
+{
+    /*background-color: #dbddff;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-position: right;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.PageFooter .FooterInfo
+{
+    color: #666;
+    font: .6em Tahoma, Arial, Sans-Serif;
+    white-space: nowrap;
+}
+
+.DDSelected
+{
+    background-color: #fdffb8;
+}
+
+div.DDNoItem
+{
+    color: Red;
+    font-family: Tahoma, Arial, Sans-Serif;
+}
+
+.DDValidator
+{
+    background-color: #BF1601;
+    color: #FFFFFF;
+    font: 0.7em Tahoma, Arial, Sans-Serif;
+    font-weight: bold;
+    padding: 8px;
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    top: 15px;
+    left: 0;
+    right: 0;
+    width: 500px;
+    border: 1px solid #BF1601;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+
+/*	Navigation	*/
+
+div.DDNavigation
+{
+    background-color: #006600;
+    font: .75em Tahoma, Arial, Sans-Serif;
+    position: relative;
+    top: -28px;
+    margin-top: 30px;
+    margin-bottom: -10px;
+    padding: 0px 5px;
+}
+
+div.DDNavigation img
+{
+    position: relative;
+    margin-top: 0em;
+    padding: 0px 8px;
+    border: none;
+    background-color: #fff;
+}
+div.DDNavigation a
+{
+    color: #839ce7;
+    text-decoration: none;
+    background-color: #fff;
+    padding-right: 8px;
+    top: -.2em;
+    left: .25em;
+}
+div.DDNavigation a:hover
+{
+    color: #000099;
+    text-decoration: underline !important;
+}
+
+
+/*	Details VIEW/EDIT	*/
+table.DDDetailsTable
+{
+    color: #666;
+    border: 1px #006600 solid;
+    border-bottom-width: 3px;
+    width: 100%;
+}
+
+
+table.DDDetailsTable a
+{
+    color: #718ABE; /*F9D006*/
+    text-decoration: none;
+    padding-right: 6px;
+}
+
+table.DDDetailsTable a:hover
+{
+    color: #000099;
+    text-decoration: underline !important;
+}
+
+table.DDDetailsTable .td
+{
+    padding: 3px 6px;
+    border: 1px solid #dbddff;
+    border-bottom-style: dotted;
+    font-size: .7em;
+    font-family: Tahoma, Arial, Sans-Serif;
+}
+
+
+/*	DDGridView/DDListView	*/
+table.DDGridView, table.DDListView
+{
+    width: 100%;
+    color: #666;
+    border: solid 1px #006600;
+    font: .7em Tahoma, Arial, Sans-Serif;
+}
+
+
+table.DDGridView .th, table.DDGridView .td, table.DDListView .th, table.DDListView .td
+{
+    white-space: nowrap;
+}
+
+table tbody tr.even td
+{
+    background-color: #FFFFEA;
+}
+
+table.DDGridView tbody tr:hover td
+{
+    background: url('../Images/Row_back_go.gif') repeat-x;
+    color: Black;
+}
+
+table.DDGridView .th, table.DDListView .th
+{
+    /* background: url('../Images/header_back_go.gif') repeat-x; */
+    background-image: linear-gradient(bottom, rgb(102,148,50) 41%, rgb(142,204,61) 71%, rgb(172,242,67) 86%);
+    background-image: -o-linear-gradient(bottom, rgb(102,148,50) 41%, rgb(142,204,61) 71%, rgb(172,242,67) 86%);
+    background-image: -moz-linear-gradient(bottom, rgb(102,148,50) 41%, rgb(142,204,61) 71%, rgb(172,242,67) 86%);
+    background-image: -webkit-linear-gradient(bottom, rgb(102,148,50) 41%, rgb(142,204,61) 71%, rgb(172,242,67) 86%);
+    background-image: -ms-linear-gradient(bottom, rgb(102,148,50) 41%, rgb(142,204,61) 71%, rgb(172,242,67) 86%);
+    background-image: -webkit-gradient( 	linear, 	left bottom, 	left top, 	color-stop(0.41, rgb(102,148,50)), 	color-stop(0.71, rgb(142,204,61)), 	color-stop(0.86, rgb(172,242,67)) );
+    line-height: 1.3em;
+    text-align: left;
+    font-size: 1em;
+    color: White;
+    border: solid 1px #006600;
+}
+
+/*
+td, th
+{
+    display: table-cell;
+    vertical-align: inherit;
+}
+*/
+
+.DDFooter:hover th, .DDFooter td
+{
+    background: url('../Images/Row_back_go.gif') repeat-x;
+    line-height: 1.3em;
+    text-align: left;
+    font-size: 1em;
+    border: solid 1px #006600;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+
+
+table.DDGridView .th a, table.DDListView .th a
+{
+    color: White;
+    text-decoration: none;
+}
+
+table.DDGridView .td, table.DDListView .td
+{
+    border: dotted 1px #006600;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    padding: 6px;
+    background-color: #FFF;
+}
+
+table.DDGridView .td a, table.DDListView .td a
+{
+    color: Gray;
+    text-decoration: none;
+}
+
+
+table.DDGridView .DDSelected a, table.DDListView .DDSelected a
+{
+    color: Red;
+    text-decoration: none;
+    margin-right: 6px;
+}
+
+table.DDGridView .DDSelected a:hover, table.DDListView .DDSelected a:hover
+{
+    color: Black;
+    text-decoration: underline;
+}
+
+table.DDGridView .td a:hover, table.DDListView .td a:hover
+{
+    color: Black;
+    text-decoration: underline;
+}
+
+/*	DataPager	*/
+div.DDPager
+{
+    padding: 0px 6px;
+}
+
+
+/* Bottom hyperlink design*/
+div.DDBottomHyperLink
+{
+    font: .75em Tahoma, Arial, Sans-Serif;
+}
+div.DDBottomHyperLink a
+{
+    color: #839ce7;
+    text-decoration: none;
+}
+div.DDBottomHyperLink a:hover
+{
+    color: Black;
+    text-decoration: underline !important;
+}
+div.DDBottomHyperLink img
+{
+    padding-right: 5px;
+    border: none;
+}
+
+/* Default/Manage */
+
+.backimage
+{
+    width: 100%;
+    height: 450px;
+    background-image: url('../Images/FundoGOPads_Small.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.backimageContainer
+{
+    width: 100%; /*max-height: 425px;*/
+    overflow: hidden;
+}
+
+.backimageInner
+{
+    background-image: url('../Images/FundoTransBlack.png');
+    color: White;
+    font: bold 2.6em Tahoma, Arial, Sans-Serif;
+    position: absolute;
+    top: 300px;
+    width: 95%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.backimageContainer img
+{
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+
+/* Masked Textbox */
+
+.MaskedEditError
+{
+    border-color: #F00;
+}
+
+#topbar
+{
+    font-family: Tahoma, Arial, Sans-Serif;
+    font-size: 14px;
+    color: #3b5d14;
+    background: #006600;
+    font-weight: bold;
+    padding: 6px;
+    overflow: auto;
+    height: 1%;
+    clear: both;
+}
+#topbar a
+{
+    color: Red;
+    text-decoration: none;
+    margin: 0 10px;
+    height: 23px;
+    line-height: 23px;
+    float: left;
+    display: block;
+}
+
+#topbar a:hover
+{
+    color: white;
+}
+
+#topbar a:hover span
+{
+    color: white;
+}
+
+#topbar a.active
+{
+    height: 23px;
+    line-height: 23px;
+    background: url('../Images/tb_a.png') right top no-repeat;
+    padding-right: 10px;
+}
+
+#topbar a.active span
+{
+    background: url('../Images/tb_span.png') left top no-repeat;
+    height: 23px;
+    display: block;
+    padding-left: 10px;
+}
+
+#middlebar
+{
+    font-family: Tahoma, Arial, Sans-Serif;
+    font-size: 11px;
+    color: #3b5d14;
+    background: lightgray;
+    font-weight: bold;
+    padding: 6px;
+    overflow: auto;
+    height: 1%;
+    clear: both;
+}
+#middlebar a
+{
+    color: #3b5d14;
+    text-decoration: none;
+    margin: 0 5px;
+    padding-right: 10px;
+    height: 23px;
+    line-height: 23px;
+    display: block;
+    float: left; /*background:url(../Images/mtb_a.png) right top no-repeat;*/
+}
+#middlebar a span
+{
+    /*background:url(../Images/mtb_span.png) left top no-repeat;*/
+    height: 23px;
+    display: block;
+    padding-left: 10px;
+}
+
+#middlebar a:hover
+{
+    color: gray;
+}
+
+#middlebar a:hover span
+{
+    color: gray;
+}
+
+#middlebar a.active
+{
+    height: 23px;
+    line-height: 23px;
+    background: url('../Images/mtb_a.png') right top no-repeat;
+    padding-right: 10px;
+}
+#middlebar a.active span
+{
+    background: url('/../Images/mtb_span.png') left top no-repeat;
+    height: 23px;
+    display: block;
+    padding-left: 10px;
+}
+
+#menubar
+{
+    margin-bottom: 30px;
+}
+
+#menuContainer
+{
+    width: 100%;
+    background: url("../Images/navBar.png") repeat-x left top;
+    height: 30px;
+}
+
+#loginDetailsContainer
+{
+    margin: 0px 5px;
+    float: right;
+    height: 29px;
+    line-height: 29px;
+}
+
+#loginDetailsContainer span, #loginDetailsContainer a
+{
+    color: Black;
+    text-decoration: none;
+    font: bold 11px Tahoma, Arial, Sans-Serif;
+    margin: 0px 9px;
+}
+
+#loginDetailsContainer a img
+{
+    margin: 0px -9px -2px 0px;
+}
+
+
+/*END MENU---------------------------------------------------*/
+
+/* --- Button --- */
+table.DDGridView input
+{
+    font: 0.95em Tahoma, Arial, Sans-Serif;
+}
+/* --- Button (Fim) --- */
+
+/* --- Search --- */
+#toggleFilters
+{
+    cursor: pointer;
+    float: left;
+    margin: 3px 6px 0px 3px;
+}
+/* --- Search (Fim) --- */
+
+/* --- GridViewContainer --- */
+#GridViewContainer
+{
+    width: 100%;
+    overflow: auto;
+}
+/* --- GridViewContainer (Fim) --- */
+
+/* --- Login --- */
+#LoginContainer
+{
+    width: 520px;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: Tahoma, Arial, Sans-Serif;
+    font-size: 12px;
+    border-radius: 15px;
+    border-color: Green;
+    border-style: solid;
+    text-align: center;
+}
+
+#LoginContainer h2
+{
+    color: White;
+    background: #006600;
+    font-weight: bold;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+#LoginContainer legend
+{
+    color: #3b5d14;
+}
+
+#InnerFieldContainer
+{
+    margin: 20px;
+}
+/* --- Login (Fim) --- */
+
+/*	DDGridView - Alt	*/
+
+table.DDDetailsTableAlt
+{
+    color: #666;
+    border: 1px #006600 solid;
+    border-bottom-width: 3px;
+    font: 0.7em Tahoma, Arial, Sans-Serif;
+    width: 100%;
+}
+
+table.DDDetailsTableAlt .DDLightHeader
+{
+    font-weight: bold;
+    text-align: right; /*background-color: #fdffb8;*/
+    background-image: url('../Images/Filter_back_go.gif');
+    background-repeat: repeat-y;
+    width: 100px;
+}
+
+table.DDDetailsTableAlt table.DDGridView
+{
+    width: 100%;
+    color: #666;
+    border: solid 1px #006600;
+    font: 11px Tahoma, Arial, Sans-Serif;
+}
+
+table.DDDetailsTableAlt td, table.DDGridView td
+{
+    /*background-image: url('/../Images/Row_back_go.gif'); 	background-repeat: repeat-x;*/
+}
+
+DIV.DDBottomHyperLink
+{
+    font: 12px Tahoma, Arial, Sans-Serif;
+}
+
+.DDInnerInsert
+{
+    border: solid 1px #006600;
+    width: 100%;
+}
+
+/* Image Test */
+.imgLogo
+{
+    background-color: #496077; /*margin: 20px auto 0px auto;*/
+    border: 1px solid #496077;
+    width: 75px;
+}
+.controlo
+{
+    background-color: #fff;
+    height: 75px;
+}
+
+.ImageselectorCheckbox
+{
+    width: 100px;
+}
+
+.thumbnail-item
+{
+    /* position relative so that we can use position absolute for the tooltip */
+    position: relative;
+    width: 75px;
+    margin: 0px auto;
+}
+
+.thumbnail-item a
+{
+    display: block;
+}
+
+.thumbnail-item img.thumbnail
+{
+    border: 3px solid #ccc;
+}
+
+.tooltip
+{
+    /* by default, hide it */
+    display: none; /* allow us to move the tooltip */
+    position: absolute; /* align the image properly */
+    padding: 8px 0 0 8px;
+}
+
+.tooltip span.overlay
+{
+    /* the png image, need ie6 hack though */
+    background: url('../Images/overlay.png') no-repeat; /* put this overlay on the top of the tooltip image */
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+}
+
+/* Image Test (fim) */
+
+/* Custom Resources */
+.CustomResourceContainer
+{
+    font: 1.3em Tahoma, Arial, Sans-Serif;
+    padding: 5px;
+    width: 100%;
+}
+
+.CustomResourceContainer > tbody > tr > td
+{
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+.CustomResourceButtonContainer
+{
+    width: 30px;
+    margin: 0 auto;
+}
+
+.CustomResourceLabelContainer
+{
+    background: #006600;
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.CustomResourceTitle
+{
+    font-family: Tahoma, Arial, Sans-Serif;
+    font-size: 14px;
+    color: #808000;
+    font-weight: bold;
+    text-align: center;
+}
+
+.CustomResourceFieldContainer
+{
+    margin-bottom: 5px;
+}
+
+.CustomResourceLabel
+{
+    float: left;
+    width: 50px;
+}
+
+.CustomResourceInnerDiv
+{
+    /*margin: 10px 0;*/
+    background: #dddddd url(../Images/FILTER_GRADIENT.gif) repeat-x top;
+}
+
+.ui-datepicker
+{
+    font-size: 10px;
+}
+
+/* Custom Resources (Fim )*/
+
+.StatusButton
+{
+    width: 150px;
+}
+
+/* JQuery DateTimePicker */
+* .ui-timepicker-div .ui-widget-header
+{
+    margin-bottom: 8px;
+}
+* .ui-timepicker-div dl
+{
+    text-align: left;
+}
+* .ui-timepicker-div dl dt
+{
+    height: 25px;
+}
+* .ui-timepicker-div dl dd
+{
+    margin: -25px 0 10px 65px;
+}
+* .ui-timepicker-div td
+{
+    font-size: 90%;
+}
+
+.ui-datepicker-trigger
+{
+    margin-left: 4px;
+    cursor: pointer;
+    border-width: 0px;
+    vertical-align: top;
+    float: none;
+    height: 14px;
+}
+
+.IconSweets2
+{
+    cursor: pointer;
+}
+
+/* Icons */
+.IconSweets2 img, INPUT.IconSweets2, img.IconSweets2
+{
+    border: 0;
+    padding: 0;
+    height: 14px;
+}
+
+table.DDGridView .td a.IconSweets2
+{
+    margin: 0;
+}
+
+.IconSweets2left img, INPUT.IconSweets2left, img.IconSweets2left
+{
+    border: 0;
+    padding: 0;
+    margin: 0px 3px -2px 0px;
+    height: 16px;
+}
+
+table.DDGridView .td a.IconSweets2left
+{
+    margin: 0;
+}
+
+.IconSweets img, INPUT.IconSweets, img.IconSweets
+{
+    border: 0;
+    padding: 0;
+    margin: 0 5px;
+    height: 14px;
+}
+
+table.DDGridView .td a.IconSweets
+{
+    margin: 0;
+}
+/* Icons (end) */
+
+
+.EditColumn
+{
+    width: 1px;
+}
+
+.jqclock
+{
+}
+
+.PriorityButton
+{
+}
+
+.imgArrows
+{
+}
+
+/* Frequency */
+
+.Frequency div
+{
+    overflow: hidden;
+}
+
+.Frequency p
+{
+    text-align: center;
+}
+
+/* Frequency (End) */
+
+.EditColumnOne
+{
+    width: 20px;
+}
+
+.DDLightHeaderInnerLabel
+{
+    width: 105px;
+}
+
+.DDLightHeaderInnerField
+{
+    text-align: left;
+    white-space: nowrap;
+}
+
+.LabelWidth
+{
+    float: left;
+    width: 120px;
+}
+
+.InputWidth
+{
+    width: 200px;
+}
+
+
+.CommonOnly
+{
+    display: none;
+}
+
+/*
+.CCNResourceContainer > tbody > tr > td
+{
+	padding: 5px;
+	border: 1px solid #ddd;
+}
+*/
+
+/* Custom Checkin New (end) */
+
+
+/* AutoComplete TextBox */
+/*AutoComplete flyout */
+
+.Autocomplete_CompletionList
+{
+    visibility: hidden;
+    margin: 0px !important;
+    border: buttonshadow;
+    border: 1px solid threedface;
+    overflow: auto;
+    width: 300px !important;
+    height: 200px;
+    text-align: left;
+    list-style-type: none;
+    background-color: #FFFFC1;
+    padding: 0;
+}
+
+/* AutoComplete item */
+
+.Autocomplete_CompletionListItem
+{
+    color: windowtext;
+    padding: 1px;
+    width: 280px !important;
+    cursor: default;
+}
+
+.Autocomplete
+{
+    background-color: #FFFFC1;
+    border: 2px inset threedface;
+}
+
+/* AutoComplete highlighted item */
+
+.Autocomplete_CompletionListHighlightedItem
+{
+    /*background-color: #ffff99;*/
+    background: url('../Images/Row_back_go.gif') repeat-x;
+    color: black;
+    padding: 1px;
+    width: 280px !important;
+    cursor: default;
+}
+/* AutoComplete TextBox (end) */
+
+/* Search Watermark */
+.water
+{
+    color: #ddd;
+}
+/* Search Watermark */
+
+
+.modalBackground
+{
+    background-color: Gray;
+    opacity: 0.7;
+}
+
+.modalPopup
+{
+    background-color: #ffffdd;
+    border-width: 3px;
+    border-style: solid;
+    border-color: Gray;
+    padding: 3px;
+    width: 250px;
+}
+
+.CheckInModeDiv
+{
+    background-color: #F9D008;
+}
+

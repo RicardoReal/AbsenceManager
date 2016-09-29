@@ -1,0 +1,1643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AMEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="ApplicationScreen">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScreenName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnlyAdmin" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AusenciaFuncionario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="Ano" Type="int" Nullable="false" />
+          <Property Name="Mes" Type="int" Nullable="false" />
+          <Property Name="Dia" Type="int" Nullable="false" />
+          <Property Name="DataAusencia" Type="datetime" Nullable="false" />
+          <Property Name="TipoAusenciaID" Type="bigint" Nullable="false" />
+          <Property Name="NrHoras" Type="decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="Observacoes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="250" />
+          <Property Name="EncarregadoID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValorPorFunc" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InnerMessage" Type="nvarchar(max)" />
+          <Property Name="StackTrace" Type="nvarchar(max)" />
+          <Property Name="Module" Type="nvarchar(max)" />
+          <Property Name="ErrorDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feriado">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mes" Type="int" Nullable="false" />
+          <Property Name="Dia" Type="int" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FeriadoData" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FeriasFuncionario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="Ano" Type="int" Nullable="false" />
+          <Property Name="Mes" Type="int" Nullable="false" />
+          <Property Name="Dia" Type="int" Nullable="false" />
+          <Property Name="NrHoras" Type="int" Nullable="false" />
+          <Property Name="Observacoes" Type="nvarchar" MaxLength="250" />
+          <Property Name="Aprovado" Type="bit" Nullable="false" />
+          <Property Name="Pendente" Type="bit" Nullable="false" />
+          <Property Name="DataFerias" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FuncionarioHorasFuncionario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="HorasID" Type="bigint" Nullable="false" />
+          <Property Name="NrHoras" Type="decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="TipoHorasID" Type="bigint" Nullable="false" />
+          <Property Name="Data" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HorasFuncionario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ano" Type="int" Nullable="false" />
+          <Property Name="Mes" Type="int" Nullable="false" />
+          <Property Name="Dia" Type="int" Nullable="false" />
+          <Property Name="Data" Type="datetime" Nullable="false" />
+          <Property Name="Observacoes" Type="nvarchar" MaxLength="250" />
+          <Property Name="NrPresencas" Type="int" Nullable="false" />
+          <Property Name="DepartamentoID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="EmpresaID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="RoleApplicationScreen">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="bigint" Nullable="false" />
+          <Property Name="ApplicationScreenID" Type="bigint" Nullable="false" />
+          <Property Name="ReadPermission" Type="bit" Nullable="false" />
+          <Property Name="WritePermission" Type="bit" Nullable="false" />
+          <Property Name="CanTrackChanges" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoAusencia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoHoras">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValorHora" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="HorasExtra" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrackAusenciaFuncionario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AusenciaFuncionarioID" Type="bigint" Nullable="false" />
+          <Property Name="FieldName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OldValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NewValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChangedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="MachineToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrackFeriasFuncionario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FeriasFuncionarioID" Type="bigint" Nullable="false" />
+          <Property Name="FieldName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OldValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NewValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChangedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="MachineToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrackHorasFuncionario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HorasFuncionarioID" Type="bigint" Nullable="false" />
+          <Property Name="FieldName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OldValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NewValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChangedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="MachineToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrackLogin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LogInDateTime" Type="datetime" Nullable="false" />
+          <Property Name="MachineToken" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrackRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="bigint" Nullable="false" />
+          <Property Name="FieldName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OldValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NewValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChangedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="MachineToken" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrackUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="NomeFuncionario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NrFunc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alteração" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValorAntigo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ValorNovo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AlteradoPor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DataAlteração" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleID" Type="bigint" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+          <Property Name="EmpresaID" Type="bigint" Nullable="false" />
+          <Property Name="NrFuncionario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustoHora" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DepartamentoID" Type="bigint" Nullable="false" />
+          <Property Name="Compensacoes" Type="decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="NrDiasFerias" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="NrFardamento" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sapato" Type="nvarchar" MaxLength="20" />
+          <Property Name="Calça" Type="nvarchar" MaxLength="20" />
+          <Property Name="Polo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Casaco" Type="nvarchar" MaxLength="20" />
+          <Property Name="Bata" Type="nvarchar" MaxLength="20" />
+          <Property Name="DataAdmissao" Type="datetime" />
+          <Property Name="Morada" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telefone" Type="nchar" MaxLength="15" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataNascimento" Type="datetime" />
+          <Property Name="NIF" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocIdentificacao" Type="bigint" />
+          <Property Name="FichaAptidao" Type="bigint" />
+          <Property Name="Curriculo" Type="bigint" />
+          <Property Name="CertHabilitacoes" Type="bigint" />
+          <Property Name="RegistoCriminal" Type="bigint" />
+        </EntityType>
+        <EntityType Name="UserDocument">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Data" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Validade" Type="datetime" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AusenciaFuncionario_Ausencia">
+          <End Role="TipoAusencia" Type="Self.TipoAusencia" Multiplicity="1" />
+          <End Role="AusenciaFuncionario" Type="Self.AusenciaFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAusencia">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AusenciaFuncionario">
+              <PropertyRef Name="TipoAusenciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AusenciaFuncionario_Funcionario">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="AusenciaFuncionario" Type="Self.AusenciaFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AusenciaFuncionario">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Departamento_Enc">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="EncarregadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeriasFuncionario_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="FeriasFuncionario" Type="Self.FeriasFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FeriasFuncionario">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HorasFunc_Func">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="FuncionarioHorasFuncionario" Type="Self.FuncionarioHorasFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FuncionarioHorasFuncionario">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HorasFunc_Horas">
+          <End Role="HorasFuncionario" Type="Self.HorasFuncionario" Multiplicity="1" />
+          <End Role="FuncionarioHorasFuncionario" Type="Self.FuncionarioHorasFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HorasFuncionario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FuncionarioHorasFuncionario">
+              <PropertyRef Name="HorasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HorasFunc_TipoHoras">
+          <End Role="TipoHoras" Type="Self.TipoHoras" Multiplicity="1" />
+          <End Role="FuncionarioHorasFuncionario" Type="Self.FuncionarioHorasFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoHoras">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FuncionarioHorasFuncionario">
+              <PropertyRef Name="TipoHorasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HorasFuncionario_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+          <End Role="HorasFuncionario" Type="Self.HorasFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HorasFuncionario">
+              <PropertyRef Name="DepartamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="EmpresaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleApplicationScreen_ApplicationScreen">
+          <End Role="ApplicationScreen" Type="Self.ApplicationScreen" Multiplicity="1" />
+          <End Role="RoleApplicationScreen" Type="Self.RoleApplicationScreen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationScreen">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleApplicationScreen">
+              <PropertyRef Name="ApplicationScreenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleApplicationScreen_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="RoleApplicationScreen" Type="Self.RoleApplicationScreen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleApplicationScreen">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_CertHab">
+          <End Role="UserDocument" Type="Self.UserDocument" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDocument">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CertHabilitacoes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_CV">
+          <End Role="UserDocument" Type="Self.UserDocument" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDocument">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Curriculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DepartamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_DocIdent">
+          <End Role="UserDocument" Type="Self.UserDocument" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDocument">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DocIdentificacao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="EmpresaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_FichaApt">
+          <End Role="UserDocument" Type="Self.UserDocument" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDocument">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="FichaAptidao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_RegCrim">
+          <End Role="UserDocument" Type="Self.UserDocument" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDocument">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RegistoCriminal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_AprovacaoFeriasPendentes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_MarcacaoHorasExtra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DepartamentoID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_MarcacaoPresencas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Data" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="AMEntitiesStoreContainer">
+          <EntitySet Name="ApplicationScreen" EntityType="Self.ApplicationScreen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AusenciaFuncionario" EntityType="Self.AusenciaFuncionario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feriado" EntityType="Self.Feriado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeriasFuncionario" EntityType="Self.FeriasFuncionario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuncionarioHorasFuncionario" EntityType="Self.FuncionarioHorasFuncionario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HorasFuncionario" EntityType="Self.HorasFuncionario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleApplicationScreen" EntityType="Self.RoleApplicationScreen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoAusencia" EntityType="Self.TipoAusencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoHoras" EntityType="Self.TipoHoras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrackAusenciaFuncionario" EntityType="Self.TrackAusenciaFuncionario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrackFeriasFuncionario" EntityType="Self.TrackFeriasFuncionario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrackHorasFuncionario" EntityType="Self.TrackHorasFuncionario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrackLogin" EntityType="Self.TrackLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrackRole" EntityType="Self.TrackRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrackUser" EntityType="Self.TrackUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDocument" EntityType="Self.UserDocument" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AusenciaFuncionario_Ausencia" Association="Self.FK_AusenciaFuncionario_Ausencia">
+            <End Role="TipoAusencia" EntitySet="TipoAusencia" />
+            <End Role="AusenciaFuncionario" EntitySet="AusenciaFuncionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AusenciaFuncionario_Funcionario" Association="Self.FK_AusenciaFuncionario_Funcionario">
+            <End Role="User" EntitySet="User" />
+            <End Role="AusenciaFuncionario" EntitySet="AusenciaFuncionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departamento_Enc" Association="Self.FK_Departamento_Enc">
+            <End Role="User" EntitySet="User" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeriasFuncionario_User" Association="Self.FK_FeriasFuncionario_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="FeriasFuncionario" EntitySet="FeriasFuncionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HorasFunc_Func" Association="Self.FK_HorasFunc_Func">
+            <End Role="User" EntitySet="User" />
+            <End Role="FuncionarioHorasFuncionario" EntitySet="FuncionarioHorasFuncionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HorasFunc_Horas" Association="Self.FK_HorasFunc_Horas">
+            <End Role="HorasFuncionario" EntitySet="HorasFuncionario" />
+            <End Role="FuncionarioHorasFuncionario" EntitySet="FuncionarioHorasFuncionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HorasFunc_TipoHoras" Association="Self.FK_HorasFunc_TipoHoras">
+            <End Role="TipoHoras" EntitySet="TipoHoras" />
+            <End Role="FuncionarioHorasFuncionario" EntitySet="FuncionarioHorasFuncionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HorasFuncionario_Departamento" Association="Self.FK_HorasFuncionario_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="HorasFuncionario" EntitySet="HorasFuncionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_Empresa" Association="Self.FK_Role_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleApplicationScreen_ApplicationScreen" Association="Self.FK_RoleApplicationScreen_ApplicationScreen">
+            <End Role="ApplicationScreen" EntitySet="ApplicationScreen" />
+            <End Role="RoleApplicationScreen" EntitySet="RoleApplicationScreen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleApplicationScreen_Role" Association="Self.FK_RoleApplicationScreen_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="RoleApplicationScreen" EntitySet="RoleApplicationScreen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_CertHab" Association="Self.FK_User_CertHab">
+            <End Role="UserDocument" EntitySet="UserDocument" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_CV" Association="Self.FK_User_CV">
+            <End Role="UserDocument" EntitySet="UserDocument" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Departamento" Association="Self.FK_User_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_DocIdent" Association="Self.FK_User_DocIdent">
+            <End Role="UserDocument" EntitySet="UserDocument" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Empresa" Association="Self.FK_User_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_FichaApt" Association="Self.FK_User_FichaApt">
+            <End Role="UserDocument" EntitySet="UserDocument" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_RegCrim" Association="Self.FK_User_RegCrim">
+            <End Role="UserDocument" EntitySet="UserDocument" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AMEntities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="AM_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicationScreens" EntityType="AMEntities.ApplicationScreen" />
+          <EntitySet Name="ErrorLogs" EntityType="AMEntities.ErrorLog" />
+          <EntitySet Name="Feriadoes" EntityType="AMEntities.Feriado" />
+          <EntitySet Name="FeriasFuncionarios" EntityType="AMEntities.FeriasFuncionario" />
+          <EntitySet Name="RoleApplicationScreens" EntityType="AMEntities.RoleApplicationScreen" />
+          <EntitySet Name="TipoAusencias" EntityType="AMEntities.TipoAusencia" />
+          <EntitySet Name="TrackLogins" EntityType="AMEntities.TrackLogin" />
+          <AssociationSet Name="FK_RoleApplicationScreen_ApplicationScreen" Association="AMEntities.FK_RoleApplicationScreen_ApplicationScreen">
+            <End Role="ApplicationScreen" EntitySet="ApplicationScreens" />
+            <End Role="RoleApplicationScreen" EntitySet="RoleApplicationScreens" />
+          </AssociationSet>
+          <FunctionImport Name="sp_MarcacaoHorasExtra" ReturnType="Collection(AMEntities.sp_MarcacaoHorasExtra_Result)">
+          <Parameter Name="DepartamentoID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_MarcacaoPresencas" ReturnType="Collection(AMEntities.sp_MarcacaoPresencas_Result)">
+          <Parameter Name="Data" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_AprovacaoFeriasPendentes" ReturnType="Collection(AMEntities.sp_AprovacaoFeriasPendentes_Result)">
+          <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <EntitySet Name="TipoHoras" EntityType="AMEntities.TipoHora" />
+          <EntitySet Name="TrackUsers" EntityType="AMEntities.TrackUser" />
+          <EntitySet Name="TrackAusenciaFuncionarios" EntityType="AMEntities.TrackAusenciaFuncionario" />
+          <EntitySet Name="TrackFeriasFuncionarios" EntityType="AMEntities.TrackFeriasFuncionario" />
+          <EntitySet Name="TrackHorasFuncionarios" EntityType="AMEntities.TrackHorasFuncionario" />
+          <EntitySet Name="TrackRoles" EntityType="AMEntities.TrackRole" />
+          <EntitySet Name="Departamentoes" EntityType="AMEntities.Departamento" />
+          <EntitySet Name="HorasFuncionarios" EntityType="AMEntities.HorasFuncionario" />
+          <AssociationSet Name="FK_HorasFuncionario_Departamento" Association="AMEntities.FK_HorasFuncionario_Departamento">
+            <End Role="Departamento" EntitySet="Departamentoes" />
+            <End Role="HorasFuncionario" EntitySet="HorasFuncionarios" />
+          </AssociationSet>
+          <EntitySet Name="AusenciaFuncionarios" EntityType="AMEntities.AusenciaFuncionario" />
+          <EntitySet Name="FuncionarioHorasFuncionarios" EntityType="AMEntities.FuncionarioHorasFuncionario" />
+          <AssociationSet Name="FK_AusenciaFuncionario_Ausencia" Association="AMEntities.FK_AusenciaFuncionario_Ausencia">
+            <End Role="TipoAusencia" EntitySet="TipoAusencias" />
+            <End Role="AusenciaFuncionario" EntitySet="AusenciaFuncionarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HorasFunc_Horas" Association="AMEntities.FK_HorasFunc_Horas">
+            <End Role="HorasFuncionario" EntitySet="HorasFuncionarios" />
+            <End Role="FuncionarioHorasFuncionario" EntitySet="FuncionarioHorasFuncionarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HorasFunc_TipoHoras" Association="AMEntities.FK_HorasFunc_TipoHoras">
+            <End Role="TipoHora" EntitySet="TipoHoras" />
+            <End Role="FuncionarioHorasFuncionario" EntitySet="FuncionarioHorasFuncionarios" />
+          </AssociationSet>
+          <EntitySet Name="Empresas" EntityType="AMEntities.Empresa" />
+          <EntitySet Name="Roles" EntityType="AMEntities.Role" />
+          <AssociationSet Name="FK_Role_Empresa" Association="AMEntities.FK_Role_Empresa">
+            <End Role="Empresa" EntitySet="Empresas" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleApplicationScreen_Role" Association="AMEntities.FK_RoleApplicationScreen_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="RoleApplicationScreen" EntitySet="RoleApplicationScreens" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="AMEntities.User" />
+          <EntitySet Name="UserDocuments" EntityType="AMEntities.UserDocument" />
+          <AssociationSet Name="FK_AusenciaFuncionario_Funcionario" Association="AMEntities.FK_AusenciaFuncionario_Funcionario">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AusenciaFuncionario" EntitySet="AusenciaFuncionarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departamento_Enc" Association="AMEntities.FK_Departamento_Enc">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Departamento" EntitySet="Departamentoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Departamento" Association="AMEntities.FK_User_Departamento">
+            <End Role="Departamento" EntitySet="Departamentoes" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Empresa" Association="AMEntities.FK_User_Empresa">
+            <End Role="Empresa" EntitySet="Empresas" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeriasFuncionario_User" Association="AMEntities.FK_FeriasFuncionario_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="FeriasFuncionario" EntitySet="FeriasFuncionarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HorasFunc_Func" Association="AMEntities.FK_HorasFunc_Func">
+            <End Role="User" EntitySet="Users" />
+            <End Role="FuncionarioHorasFuncionario" EntitySet="FuncionarioHorasFuncionarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="AMEntities.FK_User_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_CertHab" Association="AMEntities.FK_User_CertHab">
+            <End Role="UserDocument" EntitySet="UserDocuments" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_CV" Association="AMEntities.FK_User_CV">
+            <End Role="UserDocument" EntitySet="UserDocuments" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_DocIdent" Association="AMEntities.FK_User_DocIdent">
+            <End Role="UserDocument" EntitySet="UserDocuments" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_FichaApt" Association="AMEntities.FK_User_FichaApt">
+            <End Role="UserDocument" EntitySet="UserDocuments" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_RegCrim" Association="AMEntities.FK_User_RegCrim">
+            <End Role="UserDocument" EntitySet="UserDocuments" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="ApplicationScreen">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ScreenName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="OnlyAdmin" Nullable="false" />
+          <NavigationProperty Name="RoleApplicationScreens" Relationship="AMEntities.FK_RoleApplicationScreen_ApplicationScreen" FromRole="ApplicationScreen" ToRole="RoleApplicationScreen" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="InnerMessage" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StackTrace" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Module" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ErrorDateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Feriado">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Mes" Nullable="false" />
+          <Property Type="Int32" Name="Dia" Nullable="false" />
+          <Property Type="String" Name="Descricao" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="FeriadoData" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FeriasFuncionario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="Ano" Nullable="false" />
+          <Property Type="Int32" Name="Mes" Nullable="false" />
+          <Property Type="Int32" Name="Dia" Nullable="false" />
+          <Property Type="Int32" Name="NrHoras" Nullable="false" />
+          <Property Type="String" Name="Observacoes" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Aprovado" Nullable="false" />
+          <Property Type="Boolean" Name="Pendente" Nullable="false" />
+          <Property Type="DateTime" Name="DataFerias" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="AMEntities.FK_FeriasFuncionario_User" FromRole="FeriasFuncionario" ToRole="User" />
+        </EntityType>
+        <EntityType Name="RoleApplicationScreen">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="RoleID" Nullable="false" />
+          <Property Type="Int64" Name="ApplicationScreenID" Nullable="false" />
+          <Property Type="Boolean" Name="ReadPermission" Nullable="false" />
+          <Property Type="Boolean" Name="WritePermission" Nullable="false" />
+          <Property Type="Boolean" Name="CanTrackChanges" Nullable="false" />
+          <NavigationProperty Name="ApplicationScreen" Relationship="AMEntities.FK_RoleApplicationScreen_ApplicationScreen" FromRole="RoleApplicationScreen" ToRole="ApplicationScreen" />
+          <NavigationProperty Name="Role" Relationship="AMEntities.FK_RoleApplicationScreen_Role" FromRole="RoleApplicationScreen" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="TipoAusencia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descricao" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AusenciaFuncionarios" Relationship="AMEntities.FK_AusenciaFuncionario_Ausencia" FromRole="TipoAusencia" ToRole="AusenciaFuncionario" />
+        </EntityType>
+        <EntityType Name="TrackLogin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LogInDateTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="MachineToken" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_RoleApplicationScreen_ApplicationScreen">
+          <End Type="AMEntities.ApplicationScreen" Role="ApplicationScreen" Multiplicity="1" />
+          <End Type="AMEntities.RoleApplicationScreen" Role="RoleApplicationScreen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationScreen">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleApplicationScreen">
+              <PropertyRef Name="ApplicationScreenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_MarcacaoHorasExtra_Result">
+          <Property Type="Int32" Name="NrFuncionario" Nullable="false" />
+          <Property Type="String" Name="Nome" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nome1" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_MarcacaoPresencas_Result">
+          <Property Type="Int32" Name="NrFuncionario" Nullable="false" />
+          <Property Type="String" Name="Nome" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nome1" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_AprovacaoFeriasPendentes_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <EntityType Name="TipoHora">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descricao" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ValorHora" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Boolean" Name="HorasExtra" Nullable="false" />
+          <NavigationProperty Name="FuncionarioHorasFuncionarios" Relationship="AMEntities.FK_HorasFunc_TipoHoras" FromRole="TipoHora" ToRole="FuncionarioHorasFuncionario" />
+        </EntityType>
+        <ComplexType Name="GetFuncByNrFunc_Result">
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Nome" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="Int64" Name="RoleID" Nullable="false" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="IsAdmin" Nullable="false" />
+          <Property Type="Int64" Name="EmpresaID" Nullable="false" />
+          <Property Type="Int32" Name="NrFuncionario" Nullable="false" />
+          <Property Type="Decimal" Name="CustoHora" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int64" Name="DepartamentoID" Nullable="false" />
+          <Property Type="Int32" Name="Compensacoes" Nullable="false" />
+          <Property Type="Int32" Name="NrDiasFerias" Nullable="false" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="TrackUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="NomeFuncionario" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NrFunc" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Alteração" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ValorAntigo" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ValorNovo" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AlteradoPor" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DataAlteração" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TrackAusenciaFuncionario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="AusenciaFuncionarioID" Nullable="false" />
+          <Property Type="String" Name="FieldName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OldValue" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NewValue" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ChangedBy" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ChangedDateTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="MachineToken" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TrackFeriasFuncionario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="FeriasFuncionarioID" Nullable="false" />
+          <Property Type="String" Name="FieldName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OldValue" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NewValue" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ChangedBy" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ChangedDateTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="MachineToken" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TrackHorasFuncionario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="HorasFuncionarioID" Nullable="false" />
+          <Property Type="String" Name="FieldName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OldValue" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NewValue" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ChangedBy" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ChangedDateTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="MachineToken" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TrackRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="RoleID" Nullable="false" />
+          <Property Type="String" Name="FieldName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OldValue" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NewValue" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ChangedBy" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ChangedDateTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="MachineToken" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descricao" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EncarregadoID" Type="Int64" />
+          <NavigationProperty Name="HorasFuncionarios" Relationship="AMEntities.FK_HorasFuncionario_Departamento" FromRole="Departamento" ToRole="HorasFuncionario" />
+          <NavigationProperty Name="User" Relationship="AMEntities.FK_Departamento_Enc" FromRole="Departamento" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="AMEntities.FK_User_Departamento" FromRole="Departamento" ToRole="User" />
+          </EntityType>
+        <EntityType Name="HorasFuncionario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ano" Type="Int32" Nullable="false" />
+          <Property Name="Mes" Type="Int32" Nullable="false" />
+          <Property Name="Dia" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Observacoes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NrPresencas" Type="Int32" Nullable="false" />
+          <Property Name="DepartamentoID" Type="Int64" />
+          <NavigationProperty Name="Departamento" Relationship="AMEntities.FK_HorasFuncionario_Departamento" FromRole="HorasFuncionario" ToRole="Departamento" />
+          <NavigationProperty Name="FuncionarioHorasFuncionarios" Relationship="AMEntities.FK_HorasFunc_Horas" FromRole="HorasFuncionario" ToRole="FuncionarioHorasFuncionario" />
+        </EntityType>
+        <Association Name="FK_HorasFuncionario_Departamento">
+          <End Type="AMEntities.Departamento" Role="Departamento" Multiplicity="0..1" />
+          <End Type="AMEntities.HorasFuncionario" Role="HorasFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HorasFuncionario">
+              <PropertyRef Name="DepartamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AusenciaFuncionario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="Ano" Type="Int32" Nullable="false" />
+          <Property Name="Mes" Type="Int32" Nullable="false" />
+          <Property Name="Dia" Type="Int32" Nullable="false" />
+          <Property Name="DataAusencia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TipoAusenciaID" Type="Int64" Nullable="false" />
+          <Property Name="NrHoras" Type="Decimal" Nullable="false" Precision="18" Scale="1" />
+          <Property Name="Observacoes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TipoAusencia" Relationship="AMEntities.FK_AusenciaFuncionario_Ausencia" FromRole="AusenciaFuncionario" ToRole="TipoAusencia" />
+          <NavigationProperty Name="User" Relationship="AMEntities.FK_AusenciaFuncionario_Funcionario" FromRole="AusenciaFuncionario" ToRole="User" />
+        </EntityType>
+        <EntityType Name="FuncionarioHorasFuncionario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="HorasID" Type="Int64" Nullable="false" />
+          <Property Name="NrHoras" Type="Decimal" Nullable="false" Precision="18" Scale="1" />
+          <Property Name="TipoHorasID" Type="Int64" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="HorasFuncionario" Relationship="AMEntities.FK_HorasFunc_Horas" FromRole="FuncionarioHorasFuncionario" ToRole="HorasFuncionario" />
+          <NavigationProperty Name="TipoHora" Relationship="AMEntities.FK_HorasFunc_TipoHoras" FromRole="FuncionarioHorasFuncionario" ToRole="TipoHora" />
+          <NavigationProperty Name="User" Relationship="AMEntities.FK_HorasFunc_Func" FromRole="FuncionarioHorasFuncionario" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_AusenciaFuncionario_Ausencia">
+          <End Type="AMEntities.TipoAusencia" Role="TipoAusencia" Multiplicity="1" />
+          <End Type="AMEntities.AusenciaFuncionario" Role="AusenciaFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAusencia">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AusenciaFuncionario">
+              <PropertyRef Name="TipoAusenciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HorasFunc_Horas">
+          <End Type="AMEntities.HorasFuncionario" Role="HorasFuncionario" Multiplicity="1" />
+          <End Type="AMEntities.FuncionarioHorasFuncionario" Role="FuncionarioHorasFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HorasFuncionario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FuncionarioHorasFuncionario">
+              <PropertyRef Name="HorasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HorasFunc_TipoHoras">
+          <End Type="AMEntities.TipoHora" Role="TipoHora" Multiplicity="1" />
+          <End Type="AMEntities.FuncionarioHorasFuncionario" Role="FuncionarioHorasFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoHora">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FuncionarioHorasFuncionario">
+              <PropertyRef Name="TipoHorasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValorPorFunc" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Roles" Relationship="AMEntities.FK_Role_Empresa" FromRole="Empresa" ToRole="Role" />
+          <NavigationProperty Name="Users" Relationship="AMEntities.FK_User_Empresa" FromRole="Empresa" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EmpresaID" Type="Int64" />
+          <NavigationProperty Name="Empresa" Relationship="AMEntities.FK_Role_Empresa" FromRole="Role" ToRole="Empresa" />
+          <NavigationProperty Name="RoleApplicationScreens" Relationship="AMEntities.FK_RoleApplicationScreen_Role" FromRole="Role" ToRole="RoleApplicationScreen" />
+          <NavigationProperty Name="Users" Relationship="AMEntities.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Role_Empresa">
+          <End Type="AMEntities.Empresa" Role="Empresa" Multiplicity="0..1" />
+          <End Type="AMEntities.Role" Role="Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="EmpresaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleApplicationScreen_Role">
+          <End Type="AMEntities.Role" Role="Role" Multiplicity="1" />
+          <End Type="AMEntities.RoleApplicationScreen" Role="RoleApplicationScreen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoleApplicationScreen">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleID" Type="Int64" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="EmpresaID" Type="Int64" Nullable="false" />
+          <Property Name="NrFuncionario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustoHora" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="DepartamentoID" Type="Int64" Nullable="false" />
+          <Property Name="Compensacoes" Type="Decimal" Nullable="false" Precision="18" Scale="1" />
+          <Property Name="NrDiasFerias" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="NrFardamento" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sapato" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Calça" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Polo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Casaco" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Bata" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DataAdmissao" Type="DateTime" Precision="3" />
+          <Property Name="Morada" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telefone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataNascimento" Type="DateTime" Precision="3" />
+          <Property Name="NIF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocIdentificacao" Type="Int64" />
+          <Property Name="FichaAptidao" Type="Int64" />
+          <Property Name="Curriculo" Type="Int64" />
+          <Property Name="CertHabilitacoes" Type="Int64" />
+          <Property Name="RegistoCriminal" Type="Int64" />
+          <NavigationProperty Name="AusenciaFuncionarios" Relationship="AMEntities.FK_AusenciaFuncionario_Funcionario" FromRole="User" ToRole="AusenciaFuncionario" />
+          <NavigationProperty Name="Departamentoes" Relationship="AMEntities.FK_Departamento_Enc" FromRole="User" ToRole="Departamento" />
+          <NavigationProperty Name="Departamento" Relationship="AMEntities.FK_User_Departamento" FromRole="User" ToRole="Departamento" />
+          <NavigationProperty Name="Empresa" Relationship="AMEntities.FK_User_Empresa" FromRole="User" ToRole="Empresa" />
+          <NavigationProperty Name="FeriasFuncionarios" Relationship="AMEntities.FK_FeriasFuncionario_User" FromRole="User" ToRole="FeriasFuncionario" />
+          <NavigationProperty Name="FuncionarioHorasFuncionarios" Relationship="AMEntities.FK_HorasFunc_Func" FromRole="User" ToRole="FuncionarioHorasFuncionario" />
+          <NavigationProperty Name="Role" Relationship="AMEntities.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="UserDocument" Relationship="AMEntities.FK_User_CertHab" FromRole="User" ToRole="UserDocument" />
+          <NavigationProperty Name="UserDocument1" Relationship="AMEntities.FK_User_CV" FromRole="User" ToRole="UserDocument" />
+          <NavigationProperty Name="UserDocument2" Relationship="AMEntities.FK_User_DocIdent" FromRole="User" ToRole="UserDocument" />
+          <NavigationProperty Name="UserDocument3" Relationship="AMEntities.FK_User_FichaApt" FromRole="User" ToRole="UserDocument" />
+          <NavigationProperty Name="UserDocument4" Relationship="AMEntities.FK_User_RegCrim" FromRole="User" ToRole="UserDocument" />
+        </EntityType>
+        <EntityType Name="UserDocument">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Validade" Type="DateTime" Precision="3" />
+          <Property Name="ContentType" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="AMEntities.FK_User_CertHab" FromRole="UserDocument" ToRole="User" />
+          <NavigationProperty Name="Users1" Relationship="AMEntities.FK_User_CV" FromRole="UserDocument" ToRole="User" />
+          <NavigationProperty Name="Users2" Relationship="AMEntities.FK_User_DocIdent" FromRole="UserDocument" ToRole="User" />
+          <NavigationProperty Name="Users3" Relationship="AMEntities.FK_User_FichaApt" FromRole="UserDocument" ToRole="User" />
+          <NavigationProperty Name="Users4" Relationship="AMEntities.FK_User_RegCrim" FromRole="UserDocument" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_AusenciaFuncionario_Funcionario">
+          <End Type="AMEntities.User" Role="User" Multiplicity="1" />
+          <End Type="AMEntities.AusenciaFuncionario" Role="AusenciaFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AusenciaFuncionario">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Departamento_Enc">
+          <End Type="AMEntities.User" Role="User" Multiplicity="0..1" />
+          <End Type="AMEntities.Departamento" Role="Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="EncarregadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Departamento">
+          <End Type="AMEntities.Departamento" Role="Departamento" Multiplicity="1" />
+          <End Type="AMEntities.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DepartamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Empresa">
+          <End Type="AMEntities.Empresa" Role="Empresa" Multiplicity="1" />
+          <End Type="AMEntities.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="EmpresaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeriasFuncionario_User">
+          <End Type="AMEntities.User" Role="User" Multiplicity="1" />
+          <End Type="AMEntities.FeriasFuncionario" Role="FeriasFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FeriasFuncionario">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HorasFunc_Func">
+          <End Type="AMEntities.User" Role="User" Multiplicity="1" />
+          <End Type="AMEntities.FuncionarioHorasFuncionario" Role="FuncionarioHorasFuncionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FuncionarioHorasFuncionario">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Type="AMEntities.Role" Role="Role" Multiplicity="1" />
+          <End Type="AMEntities.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_CertHab">
+          <End Type="AMEntities.UserDocument" Role="UserDocument" Multiplicity="0..1" />
+          <End Type="AMEntities.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDocument">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CertHabilitacoes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_CV">
+          <End Type="AMEntities.UserDocument" Role="UserDocument" Multiplicity="0..1" />
+          <End Type="AMEntities.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDocument">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Curriculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_DocIdent">
+          <End Type="AMEntities.UserDocument" Role="UserDocument" Multiplicity="0..1" />
+          <End Type="AMEntities.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDocument">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DocIdentificacao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_FichaApt">
+          <End Type="AMEntities.UserDocument" Role="UserDocument" Multiplicity="0..1" />
+          <End Type="AMEntities.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDocument">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="FichaAptidao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_RegCrim">
+          <End Type="AMEntities.UserDocument" Role="UserDocument" Multiplicity="0..1" />
+          <End Type="AMEntities.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDocument">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RegistoCriminal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AMEntitiesStoreContainer" CdmEntityContainer="AM_Entities">
+          <EntitySetMapping Name="ApplicationScreens">
+            <EntityTypeMapping TypeName="AMEntities.ApplicationScreen">
+              <MappingFragment StoreEntitySet="ApplicationScreen">
+                <ScalarProperty Name="OnlyAdmin" ColumnName="OnlyAdmin" />
+                <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="AMEntities.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="ErrorDateTime" ColumnName="ErrorDateTime" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="InnerMessage" ColumnName="InnerMessage" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feriadoes">
+            <EntityTypeMapping TypeName="AMEntities.Feriado">
+              <MappingFragment StoreEntitySet="Feriado">
+                <ScalarProperty Name="FeriadoData" ColumnName="FeriadoData" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeriasFuncionarios">
+            <EntityTypeMapping TypeName="AMEntities.FeriasFuncionario">
+              <MappingFragment StoreEntitySet="FeriasFuncionario">
+                <ScalarProperty Name="DataFerias" ColumnName="DataFerias" />
+                <ScalarProperty Name="Pendente" ColumnName="Pendente" />
+                <ScalarProperty Name="Aprovado" ColumnName="Aprovado" />
+                <ScalarProperty Name="Observacoes" ColumnName="Observacoes" />
+                <ScalarProperty Name="NrHoras" ColumnName="NrHoras" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleApplicationScreens">
+            <EntityTypeMapping TypeName="AMEntities.RoleApplicationScreen">
+              <MappingFragment StoreEntitySet="RoleApplicationScreen">
+                <ScalarProperty Name="CanTrackChanges" ColumnName="CanTrackChanges" />
+                <ScalarProperty Name="WritePermission" ColumnName="WritePermission" />
+                <ScalarProperty Name="ReadPermission" ColumnName="ReadPermission" />
+                <ScalarProperty Name="ApplicationScreenID" ColumnName="ApplicationScreenID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoAusencias">
+            <EntityTypeMapping TypeName="AMEntities.TipoAusencia">
+              <MappingFragment StoreEntitySet="TipoAusencia">
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrackLogins">
+            <EntityTypeMapping TypeName="AMEntities.TrackLogin">
+              <MappingFragment StoreEntitySet="TrackLogin">
+                <ScalarProperty Name="MachineToken" ColumnName="MachineToken" />
+                <ScalarProperty Name="LogInDateTime" ColumnName="LogInDateTime" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_MarcacaoHorasExtra" FunctionName="AMEntities.Store.sp_MarcacaoHorasExtra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AMEntities.sp_MarcacaoHorasExtra_Result">
+                <ScalarProperty Name="NrFuncionario" ColumnName="NrFuncionario" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Nome1" ColumnName="Nome1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_MarcacaoPresencas" FunctionName="AMEntities.Store.sp_MarcacaoPresencas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AMEntities.sp_MarcacaoPresencas_Result">
+                <ScalarProperty Name="NrFuncionario" ColumnName="NrFuncionario" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Nome1" ColumnName="Nome1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_AprovacaoFeriasPendentes" FunctionName="AMEntities.Store.sp_AprovacaoFeriasPendentes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AMEntities.sp_AprovacaoFeriasPendentes_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="TipoHoras">
+            <EntityTypeMapping TypeName="AMEntities.TipoHora">
+              <MappingFragment StoreEntitySet="TipoHoras">
+                <ScalarProperty Name="HorasExtra" ColumnName="HorasExtra" />
+                <ScalarProperty Name="ValorHora" ColumnName="ValorHora" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrackUsers">
+            <EntityTypeMapping TypeName="AMEntities.TrackUser">
+              <MappingFragment StoreEntitySet="TrackUser">
+                <ScalarProperty Name="DataAlteração" ColumnName="DataAlteração" />
+                <ScalarProperty Name="AlteradoPor" ColumnName="AlteradoPor" />
+                <ScalarProperty Name="ValorNovo" ColumnName="ValorNovo" />
+                <ScalarProperty Name="ValorAntigo" ColumnName="ValorAntigo" />
+                <ScalarProperty Name="Alteração" ColumnName="Alteração" />
+                <ScalarProperty Name="NrFunc" ColumnName="NrFunc" />
+                <ScalarProperty Name="NomeFuncionario" ColumnName="NomeFuncionario" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrackAusenciaFuncionarios">
+            <EntityTypeMapping TypeName="AMEntities.TrackAusenciaFuncionario">
+              <MappingFragment StoreEntitySet="TrackAusenciaFuncionario">
+                <ScalarProperty Name="MachineToken" ColumnName="MachineToken" />
+                <ScalarProperty Name="ChangedDateTime" ColumnName="ChangedDateTime" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+                <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="AusenciaFuncionarioID" ColumnName="AusenciaFuncionarioID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrackFeriasFuncionarios">
+            <EntityTypeMapping TypeName="AMEntities.TrackFeriasFuncionario">
+              <MappingFragment StoreEntitySet="TrackFeriasFuncionario">
+                <ScalarProperty Name="MachineToken" ColumnName="MachineToken" />
+                <ScalarProperty Name="ChangedDateTime" ColumnName="ChangedDateTime" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+                <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="FeriasFuncionarioID" ColumnName="FeriasFuncionarioID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrackHorasFuncionarios">
+            <EntityTypeMapping TypeName="AMEntities.TrackHorasFuncionario">
+              <MappingFragment StoreEntitySet="TrackHorasFuncionario">
+                <ScalarProperty Name="MachineToken" ColumnName="MachineToken" />
+                <ScalarProperty Name="ChangedDateTime" ColumnName="ChangedDateTime" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+                <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="HorasFuncionarioID" ColumnName="HorasFuncionarioID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrackRoles">
+            <EntityTypeMapping TypeName="AMEntities.TrackRole">
+              <MappingFragment StoreEntitySet="TrackRole">
+                <ScalarProperty Name="MachineToken" ColumnName="MachineToken" />
+                <ScalarProperty Name="ChangedDateTime" ColumnName="ChangedDateTime" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+                <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamentoes">
+            <EntityTypeMapping TypeName="AMEntities.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="EncarregadoID" ColumnName="EncarregadoID" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HorasFuncionarios">
+            <EntityTypeMapping TypeName="AMEntities.HorasFuncionario">
+              <MappingFragment StoreEntitySet="HorasFuncionario">
+                <ScalarProperty Name="DepartamentoID" ColumnName="DepartamentoID" />
+                <ScalarProperty Name="NrPresencas" ColumnName="NrPresencas" />
+                <ScalarProperty Name="Observacoes" ColumnName="Observacoes" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AusenciaFuncionarios">
+            <EntityTypeMapping TypeName="AMEntities.AusenciaFuncionario">
+              <MappingFragment StoreEntitySet="AusenciaFuncionario">
+                <ScalarProperty Name="Observacoes" ColumnName="Observacoes" />
+                <ScalarProperty Name="NrHoras" ColumnName="NrHoras" />
+                <ScalarProperty Name="TipoAusenciaID" ColumnName="TipoAusenciaID" />
+                <ScalarProperty Name="DataAusencia" ColumnName="DataAusencia" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuncionarioHorasFuncionarios">
+            <EntityTypeMapping TypeName="AMEntities.FuncionarioHorasFuncionario">
+              <MappingFragment StoreEntitySet="FuncionarioHorasFuncionario">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="TipoHorasID" ColumnName="TipoHorasID" />
+                <ScalarProperty Name="NrHoras" ColumnName="NrHoras" />
+                <ScalarProperty Name="HorasID" ColumnName="HorasID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresas">
+            <EntityTypeMapping TypeName="AMEntities.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="ValorPorFunc" ColumnName="ValorPorFunc" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="AMEntities.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="EmpresaID" ColumnName="EmpresaID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Role1" ColumnName="Role1" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AMEntities.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="RegistoCriminal" ColumnName="RegistoCriminal" />
+                <ScalarProperty Name="CertHabilitacoes" ColumnName="CertHabilitacoes" />
+                <ScalarProperty Name="Curriculo" ColumnName="Curriculo" />
+                <ScalarProperty Name="FichaAptidao" ColumnName="FichaAptidao" />
+                <ScalarProperty Name="DocIdentificacao" ColumnName="DocIdentificacao" />
+                <ScalarProperty Name="NIF" ColumnName="NIF" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Morada" ColumnName="Morada" />
+                <ScalarProperty Name="DataAdmissao" ColumnName="DataAdmissao" />
+                <ScalarProperty Name="Bata" ColumnName="Bata" />
+                <ScalarProperty Name="Casaco" ColumnName="Casaco" />
+                <ScalarProperty Name="Polo" ColumnName="Polo" />
+                <ScalarProperty Name="Calça" ColumnName="Calça" />
+                <ScalarProperty Name="Sapato" ColumnName="Sapato" />
+                <ScalarProperty Name="NrFardamento" ColumnName="NrFardamento" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="NrDiasFerias" ColumnName="NrDiasFerias" />
+                <ScalarProperty Name="Compensacoes" ColumnName="Compensacoes" />
+                <ScalarProperty Name="DepartamentoID" ColumnName="DepartamentoID" />
+                <ScalarProperty Name="CustoHora" ColumnName="CustoHora" />
+                <ScalarProperty Name="NrFuncionario" ColumnName="NrFuncionario" />
+                <ScalarProperty Name="EmpresaID" ColumnName="EmpresaID" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDocuments">
+            <EntityTypeMapping TypeName="AMEntities.UserDocument">
+              <MappingFragment StoreEntitySet="UserDocument">
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Validade" ColumnName="Validade" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="AMEntities" ZoomLevel="62">
+        <EntityTypeShape EntityType="AMEntities.ApplicationScreen" Width="1.5" PointX="0.75" PointY="6.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="AMEntities.ErrorLog" Width="1.5" PointX="0.75" PointY="0.75" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="AMEntities.Feriado" Width="1.5" PointX="2.75" PointY="0.75" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="AMEntities.FeriasFuncionario" Width="1.5" PointX="11.25" PointY="10" Height="3.1340950520833282" />
+        <EntityTypeShape EntityType="AMEntities.RoleApplicationScreen" Width="1.5" PointX="3" PointY="9.375" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="AMEntities.TipoAusencia" Width="1.5" PointX="6" PointY="5.875" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="AMEntities.TrackLogin" Width="1.5" PointX="0.75" PointY="3.75" Height="1.9802864583333246" />
+        <AssociationConnector Association="AMEntities.FK_RoleApplicationScreen_ApplicationScreen" >
+          <ConnectorPoint PointX="2.25" PointY="8.4442350260416674" />
+          <ConnectorPoint PointX="3.34375" PointY="8.4442350260416674" />
+          <ConnectorPoint PointX="3.34375" PointY="9.375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="AMEntities.TipoHora" Width="1.5" PointX="10.622352528675624" PointY="31.634735271164558" />
+        <EntityTypeShape EntityType="AMEntities.TrackUser" Width="1.5" PointX="1.8316628121918359" PointY="31.889012485690888" />
+        <EntityTypeShape EntityType="AMEntities.TrackAusenciaFuncionario" Width="1.5" PointX="7.2120814841296905" PointY="9.0184504729781541" />
+        <EntityTypeShape EntityType="AMEntities.TrackFeriasFuncionario" Width="1.5" PointX="11.020421884497825" PointY="0.62559762626215709" />
+        <EntityTypeShape EntityType="AMEntities.TrackHorasFuncionario" Width="1.5" PointX="7.7141675202707614" PointY="1.796095968129158" />
+        <EntityTypeShape EntityType="AMEntities.TrackRole" Width="1.5" PointX="5.9267577984960553" PointY="9.244216118587282" />
+        <EntityTypeShape EntityType="AMEntities.Departamento" Width="1.5" PointX="3.375" PointY="27.75" />
+        <EntityTypeShape EntityType="AMEntities.HorasFuncionario" Width="1.5" PointX="5.625" PointY="27.5" />
+        <AssociationConnector Association="AMEntities.FK_HorasFuncionario_Departamento" />
+        <EntityTypeShape EntityType="AMEntities.AusenciaFuncionario" Width="1.5" PointX="8.25" PointY="14.125" />
+        <EntityTypeShape EntityType="AMEntities.FuncionarioHorasFuncionario" Width="1.5" PointX="12.875" PointY="24.25" />
+        <AssociationConnector Association="AMEntities.FK_AusenciaFuncionario_Ausencia" />
+        <AssociationConnector Association="AMEntities.FK_HorasFunc_Horas" />
+        <AssociationConnector Association="AMEntities.FK_HorasFunc_TipoHoras" />
+        <EntityTypeShape EntityType="AMEntities.Empresa" Width="1.5" PointX="3.75" PointY="20.5" />
+        <EntityTypeShape EntityType="AMEntities.Role" Width="1.5" PointX="0.75" PointY="16.25" />
+        <AssociationConnector Association="AMEntities.FK_Role_Empresa" />
+        <AssociationConnector Association="AMEntities.FK_RoleApplicationScreen_Role" />
+        <EntityTypeShape EntityType="AMEntities.User" Width="1.5" PointX="0.75" PointY="15.375" />
+        <EntityTypeShape EntityType="AMEntities.UserDocument" Width="1.5" PointX="3.75" PointY="19.625" />
+        <AssociationConnector Association="AMEntities.FK_AusenciaFuncionario_Funcionario" />
+        <AssociationConnector Association="AMEntities.FK_Departamento_Enc" />
+        <AssociationConnector Association="AMEntities.FK_User_Departamento" />
+        <AssociationConnector Association="AMEntities.FK_User_Empresa" />
+        <AssociationConnector Association="AMEntities.FK_FeriasFuncionario_User" />
+        <AssociationConnector Association="AMEntities.FK_HorasFunc_Func" />
+        <AssociationConnector Association="AMEntities.FK_User_Role" />
+        <AssociationConnector Association="AMEntities.FK_User_CertHab" />
+        <AssociationConnector Association="AMEntities.FK_User_CV" />
+        <AssociationConnector Association="AMEntities.FK_User_DocIdent" />
+        <AssociationConnector Association="AMEntities.FK_User_FichaApt" />
+        <AssociationConnector Association="AMEntities.FK_User_RegCrim" />
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
