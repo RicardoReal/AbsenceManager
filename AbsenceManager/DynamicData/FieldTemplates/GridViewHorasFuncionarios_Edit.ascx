@@ -45,8 +45,8 @@
 <div id="ScriptContainer" runat="server">
 </div>
 
-<asp:FormView runat="server" ID="FormView1" DataSourceID="FormViewDataSource" DefaultMode="Insert"
-    RenderOuterTable="false">
+<asp:FormView runat="server" ID="FormView1" DataSourceID="FormViewDataSource" OnModeChanged="FormView1_ModeChanged"
+    RenderOuterTable="false" on>
     <InsertItemTemplate>
         <asp:Panel ID="cenas" runat="server" DefaultButton="LinkButton1">
             <table id="detailsTable" class="DDInnerInsert" cellpadding="6">
@@ -55,7 +55,7 @@
                     <td colspan="2">
                         <asp:Button ID="LinkButton1" runat="server" CommandName="Insert" Text="Insert" />
                         <asp:LinkButton ID="LinkButton2" runat="server" CommandName="Cancel" Text="Close"
-                            CausesValidation="false" />
+                            CausesValidation="false" OnClick="lkbToggle_Click"/>
                     </td>
                 </tr>
             </table>

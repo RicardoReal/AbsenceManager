@@ -840,6 +840,7 @@
     <Content Include="Images\Web.config" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+    <None Include="Properties\PublishProfiles\PublishAM.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

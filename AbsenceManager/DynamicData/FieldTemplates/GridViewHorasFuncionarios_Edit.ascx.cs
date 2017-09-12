@@ -12,6 +12,7 @@ namespace AbsenceManager
     {
         protected System.Web.DynamicData.MetaTable table, tableInsert;
         private string _UserName;
+        private FormViewMode _formViewMode;
 
         private bool _hasOnScreenPermission;
         private bool _hasInlinePermission;
@@ -146,6 +147,9 @@ namespace AbsenceManager
                 // throw an error if set on column other than MetaChildrenColumns
                 throw new InvalidOperationException("The GridView FieldTemplate can only be used with MetaChildrenColumns");
             }
+
+            //FormView1.ChangeMode(FormViewMode.Insert);
+            //_formViewMode = FormViewMode.Insert;
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -204,7 +208,6 @@ namespace AbsenceManager
                 i++;
             }
 
-            FormView1.ChangeMode(FormViewMode.Insert);
         }
 
         // Não mostar a FormView no momento em que se edita um registo da GridView
@@ -226,6 +229,7 @@ namespace AbsenceManager
                 GeneralHelpers.ShowJavascriptAlert("O registo não pode ser apagado neste momento.");
                 e.ExceptionHandled = true;
             }
+            Page.Response.Redirect(Page.Request.RawUrl);
         }
 
         // Refresh da GridView após um insert
@@ -240,6 +244,8 @@ namespace AbsenceManager
             else
             {
                 GridView1.DataBind();
+                FormView1.ChangeMode(FormViewMode.Insert);
+                _formViewMode = FormViewMode.Insert;
             }
         }
 
@@ -259,11 +265,18 @@ namespace AbsenceManager
             }
         }
 
+        protected void FormView1_ModeChanged(object sender, EventArgs e)
+        {
+            FormView1.ChangeMode(_formViewMode);
+        }
+
+
         // Toogle do panel de insert
         protected void lkbToggle_Click(object sender, EventArgs e)
         {
             FormViewMode fvm = (FormView1.CurrentMode == FormViewMode.ReadOnly) ? FormViewMode.Insert : FormViewMode.ReadOnly;
             FormView1.ChangeMode(fvm);
+            _formViewMode = fvm;
         }
     }
 }
