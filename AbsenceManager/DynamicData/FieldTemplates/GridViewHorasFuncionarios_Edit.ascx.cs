@@ -203,6 +203,8 @@ namespace AbsenceManager
 
                 i++;
             }
+
+            FormView1.ChangeMode(FormViewMode.Insert);
         }
 
         // Não mostar a FormView no momento em que se edita um registo da GridView
@@ -235,7 +237,10 @@ namespace AbsenceManager
                 customValida.ErrorMessage = e.Exception.Message;
                 e.ExceptionHandled = true;
             }
-            else GridView1.DataBind();
+            else
+            {
+                GridView1.DataBind();
+            }
         }
 
         protected void FormViewDataSource_Inserting(object sender, EntityDataSourceChangingEventArgs e)

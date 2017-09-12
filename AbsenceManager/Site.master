@@ -5,7 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>Absence Manager</title>
-    <script language="javascript" src='<%= Page.ResolveClientUrl("~/Scripts/jquery-1.4.4.min.js") %>'
+    <asp:PlaceHolder runat="server">
+        <script language="javascript" src='<%= Page.ResolveClientUrl("~/Scripts/jquery-1.4.4.min.js") %>'
         type="text/javascript"></script>
     <script language="javascript" src='<%= Page.ResolveClientUrl("~/Scripts/jquery-ui-1.8.6.custom.min.js") %>'
         type="text/javascript"></script>
@@ -21,11 +22,13 @@
         type="text/javascript"></script>
     <script language="javascript" src='<%= Page.ResolveClientUrl("~/Scripts/jquery.inputmask.js") %>'
         type="text/javascript"></script>
-    <link href="~/Styles/jquery-ui-1.8.6.custom.css" media="screen" rel="stylesheet"
+    <link href="/Styles/jquery-ui-1.8.6.custom.css" media="screen" rel="stylesheet"
         type="text/css" />
-    <link href="~/Menu/fg.menu.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="~/Menu/theme/jquery.ui.theme.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="~/Styles/Site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/Menu/fg.menu.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/Menu/theme/jquery.ui.theme.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/Styles/Site.css" media="screen" rel="stylesheet" type="text/css" />
+    </asp:PlaceHolder>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
